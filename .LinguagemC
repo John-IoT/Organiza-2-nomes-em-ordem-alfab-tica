@@ -1,52 +1,31 @@
-# Prerequisites
-*.d
+//Organiza 2 nomes em ordem alfabética
+#include <stdio.h>
+#include <string.h>
+//Compara os nomes e exibe a ordem correta na tela
+void comparaNome(char nome1[], char nome2[]){
+    for(int i=0; i<strlen(nome1)&&i<strlen(nome2); i++){
+        if(nome1[i]==nome2[i]){
+            continue;
+        }else{
+            if(nome1[i]<nome2[i]){
+                printf("%s\n%s\n", nome1, nome2);
+                break;
+            }else{
+                printf("%s\n%s\n", nome2, nome1);
+                break;
+            }   
+        }
+    }
+}
+int main(){
+    char nome[2][101];
+    printf("Digite o primeiro nome: ");
+    fgets(nome[0], sizeof(nome[0]), stdin);
+    nome[0][strcspn(nome[0],"\n")]='\0'; //substitui o enter e cria uma string
+    printf("Digite o segundo nome: ");
+    fgets(nome[1], sizeof(nome[1]), stdin); //substitui o enter e cria uma string
+    nome[1][strcspn(nome[1],"\n")]='\0';
+    comparaNome(nome[0], nome[1]);
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
-
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+return 0;
+}
